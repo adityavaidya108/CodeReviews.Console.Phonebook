@@ -9,6 +9,7 @@ internal class ContactContext: DbContext
     public DbSet<Category> Categories { get; set; } = null!;
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        optionsBuilder.UseSqlServer(DotNetEnv.Env.GetString("CONNECION_STRING"));
+        DotNetEnv.Env.Load();
+        optionsBuilder.UseSqlServer(DotNetEnv.Env.GetString("CONNECTION_STRING"));
     }
 }
